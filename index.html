@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shree Shyam Dairy — Sweets · Restaurant · Bakery · Party Hall · Noida</title>
+  <meta name="description" content="A Noida legacy of authentic Indian sweets, royal restaurant dining, premium bakery and grand celebration banquet hall — since 2002." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS scroll animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <link rel="stylesheet" href="assests/styles.css" />
+
+<style>
+/* ===== GLOBAL RESPONSIVE FIXES ===== */
+html,body{
+    overflow-x:hidden;
+    width:100%;
+}
+img{
+    max-width:100%;
+    height:auto;
+}
+.container-xl{
+    width:100%;
+}
+section{
+    overflow:hidden;
+}
+
+/* Navbar */
+@media(max-width:991px){
+    .luxe-nav .container-xl{
+        padding-left:16px;
+        padding-right:16px;
+    }
+    .brand-name{
+        font-size:15px;
+    }
+    .brand-sub{
+        font-size:9px;
+    }
+}
+
+/* Hero */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+}
+.hero-title{
+    font-size:clamp(2.2rem,7vw,5rem);
+    line-height:1.05;
+}
+.hero-sub{
+    max-width:650px;
+    font-size:clamp(.9rem,2vw,1.1rem);
+}
+.hero-stats{
+    flex-wrap:wrap;
+}
+@media(max-width:576px){
+    .hero{
+        padding-top:110px;
+        padding-bottom:60px;
+    }
+    .hero-ctas .btn{
+        width:100%;
+        max-width:300px;
+    }
+    .hero-stats{
+        gap:25px!important;
+    }
+    .stat-v{
+        font-size:28px;
+    }
+}
+
+/* Floating cards */
+@media(max-width:768px){
+    .float-card{
+        display:none!important;
+    }
+}
+
+/* Sections */
+.section{
+    padding:80px 0;
+}
+.section-title{
+    font-size:clamp(2rem,5vw,3.5rem);
+}
+.section-lead{
+    font-size:clamp(.95rem,2vw,1.1rem);
+}
+
+/* About image */
+.about-img-main img,
+.about-img-overlap img{
+    width:100%;
+    object-fit:cover;
+}
+@media(max-width:991px){
+    .about-img-overlap{
+        position:relative!important;
+        margin-top:20px;
+        left:0!important;
+        bottom:0!important;
+    }
+}
+
+/* Cards */
+.sweet-card,
+.event-card{
+    height:100%;
+}
+.sweet-title{
+    font-size:clamp(1.3rem,3vw,2rem);
+}
+
+/* Bakery / Gallery grids */
+.bakery-grid,
+.party-grid{
+    display:grid;
+    gap:20px;
+}
+@media(max-width:768px){
+    .bakery-grid,
+    .party-grid{
+        grid-template-columns:1fr!important;
+    }
+}
+
+/* Buttons */
+.btn{
+    white-space:normal;
+}
+
+/* Contact */
+.map-wrap iframe{
+    width:100%;
+    min-height:350px;
+}
+@media(max-width:576px){
+    .map-wrap iframe{
+        min-height:280px;
+    }
+}
+
+/* Footer */
+@media(max-width:576px){
+    .footer .row{
+        text-align:center;
+    }
+    .footer .d-flex{
+        justify-content:center;
+    }
+}
+
+/* Floating buttons */
+.float-btn{
+    z-index:999;
+}
+@media(max-width:576px){
+    .float-btn{
+        width:48px!important;
+        height:48px!important;
+    }
+}
+
+/* Extra small devices */
+@media(max-width:375px){
+    .brand-mark{
+        width:35px!important;
+        height:35px!important;
+    }
+    .container-xl{
+        padding-left:15px;
+        padding-right:15px;
+    }
+}
+</style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
+
+  <!-- Hidden by React (we keep #root empty) -->
+  <div id="root" style="display:none"></div>
+
+  <!-- LUXURY LOADER -->
+  <div id="loader" class="loader" data-testid="luxury-loader">
+    <div class="text-center">
+      <div class="overline text-gold mb-3">Est. Tradition</div>
+      <h1 class="font-serif text-cream mb-4 loader-title">
+        Shree <span class="fst-italic text-gold">Shyam</span> Dairy
+      </h1>
+      <div class="loader-line mx-auto"><span></span></div>
+      <div class="overline text-cream-60 mt-3" style="font-size:.55rem">Sweets · Restaurant · Bakery · Party Hall</div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="mainNav" class="navbar navbar-expand-lg fixed-top luxe-nav" data-testid="nav-bar">
+    <div class="container-xl">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#top" data-testid="nav-logo">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <span class="brand-name">Shree Shyam <i class="text-maroon">Dairy</i></span>
+          <span class="brand-sub overline">Since 2002 · Noida</span>
+        </span>
+      </a>
+      <button class="navbar-toggler border-0" data-testid="nav-menu-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
+        <i data-lucide="menu"></i>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto gap-lg-4">
+          <li class="nav-item"><a class="nav-link luxe-link" href="#sweets" data-testid="nav-link-sweets">Sweets</a></li>
+          <li class="nav-item"><a class="nav-link luxe-link" href="#restaurant" data-testid="nav-link-restaurant">Restaurant</a></li>
+          <li class="nav-item"><a class="nav-link luxe-link" href="#bakery" data-testid="nav-link-bakery">Bakery</a></li>
+          <li class="nav-item"><a class="nav-link luxe-link" href="#party-hall" data-testid="nav-link-party-hall">Party Hall</a></li>
+          <li class="nav-item"><a class="nav-link luxe-link" href="#contact" data-testid="nav-link-contact">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-3">
+          <a href="tel:+919999999999" class="d-none d-md-inline-flex align-items-center gap-2 small text-brown" data-testid="nav-call-btn">
+            <i data-lucide="phone" style="width:15px;height:15px"></i>+91 99999 99999
+          </a>
+          <a href="#order" class="btn btn-maroon rounded-pill px-4" data-testid="nav-order-btn">Order Online</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE OFFCANVAS -->
+  <div class="offcanvas offcanvas-end mobile-menu" tabindex="-1" id="mobileMenu" data-testid="mobile-menu">
+    <div class="offcanvas-header">
+      <span class="font-serif h4 m-0">Menu</span>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column gap-3">
+      <a href="#sweets" data-bs-dismiss="offcanvas" class="mobile-link">Sweets</a>
+      <a href="#restaurant" data-bs-dismiss="offcanvas" class="mobile-link">Restaurant</a>
+      <a href="#bakery" data-bs-dismiss="offcanvas" class="mobile-link">Bakery</a>
+      <a href="#party-hall" data-bs-dismiss="offcanvas" class="mobile-link">Party Hall</a>
+      <a href="#contact" data-bs-dismiss="offcanvas" class="mobile-link">Contact</a>
+      <a href="#order" data-bs-dismiss="offcanvas" class="btn btn-maroon rounded-pill mt-3">Order Online</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section id="top" class="hero" data-testid="hero-section">
+    <div class="hero-rings" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+
+    <!-- Floating sweets -->
+    <div class="float-card fc-1 d-none d-sm-block" data-parallax="0.15">
+      <img src="https://images.pexels.com/photos/8887052/pexels-photo-8887052.jpeg?auto=compress&cs=tinysrgb&w=520" alt="Kaju Katli" loading="lazy">
+      <div class="float-cap"><span class="overline text-gold">Signature</span><div class="font-serif">Kaju Katli</div></div>
+    </div>
+    <div class="float-card fc-2 d-none d-sm-block" data-parallax="0.22">
+      <img src="https://images.pexels.com/photos/37219215/pexels-photo-37219215.jpeg?auto=compress&cs=tinysrgb&w=520" alt="Festive Mithai" loading="lazy">
+      <div class="float-cap"><span class="overline text-gold">Signature</span><div class="font-serif">Festive Mithai</div></div>
+    </div>
+    <div class="float-card fc-3 d-none d-sm-block" data-parallax="0.18">
+      <img src="https://images.pexels.com/photos/27497012/pexels-photo-27497012.jpeg?auto=compress&cs=tinysrgb&w=520" alt="Signature Cake" loading="lazy">
+      <div class="float-cap"><span class="overline text-gold">Signature</span><div class="font-serif">Signature Cake</div></div>
+    </div>
+    <div class="float-card fc-4 d-none d-sm-block" data-parallax="0.26">
+      <img src="https://images.pexels.com/photos/16935999/pexels-photo-16935999.jpeg?auto=compress&cs=tinysrgb&w=520" alt="Banquet Hall" loading="lazy">
+      <div class="float-cap"><span class="overline text-gold">Signature</span><div class="font-serif">Banquet Hall</div></div>
+    </div>
+
+    <div class="container-xl text-center position-relative" style="z-index:5">
+      <div class="overline text-maroon mb-3 hero-divider">A Noida Legacy · Est. 2002</div>
+      <h1 class="hero-title font-serif" data-testid="hero-heading">
+        Authentic Taste.<br>
+        <span class="fst-italic text-maroon">Premium</span>
+        <span class="shimmer">Experience</span><span class="text-gold">.</span>
+      </h1>
+      <p class="hero-sub mx-auto">Where every celebration becomes special — handcrafted mithai, royal thalis, fresh bakery and an unforgettable banquet hall, all under one golden roof.</p>
+
+      <div class="hero-ctas d-flex flex-column flex-sm-row gap-3 justify-content-center align-items-center mt-4">
+        <a href="#sweets" class="btn btn-maroon rounded-pill px-4 py-3" data-testid="hero-cta-explore">
+          <i data-lucide="utensils-crossed" style="width:16px;height:16px"></i>
+          <span class="ms-2">Explore Menu</span>
+          <i data-lucide="arrow-right" style="width:16px;height:16px" class="ms-2"></i>
+        </a>
+        <a href="#party-hall" class="btn btn-outline-maroon rounded-pill px-4 py-3" data-testid="hero-cta-book">
+          <i data-lucide="calendar-heart" style="width:16px;height:16px"></i>
+          <span class="ms-2">Book Party Hall</span>
+        </a>
+        <a href="#contact" class="btn btn-gold rounded-pill px-4 py-3" data-testid="hero-cta-order">
+          <i data-lucide="shopping-bag" style="width:16px;height:16px"></i>
+          <span class="ms-2">Order Online</span>
+        </a>
+      </div>
+
+      <div class="hero-stats d-flex justify-content-center gap-4 gap-md-5 mt-5">
+        <div><div class="font-serif stat-v">23+</div><div class="overline">Years of Trust</div></div>
+        <div><div class="font-serif stat-v">1000+</div><div class="overline">Happy Families</div></div>
+        <div><div class="font-serif stat-v">200+</div><div class="overline">Sweet Varieties</div></div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator"><span class="overline">Scroll</span><div class="line"></div></div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="marquee" data-testid="marquee">
+    <div class="marquee-track">
+      <span><i data-lucide="sparkles"></i>Pure Desi Ghee Mithai</span>
+      <span><i data-lucide="sparkles"></i>Royal Thali Experience</span>
+      <span><i data-lucide="sparkles"></i>Custom Designer Cakes</span>
+      <span><i data-lucide="sparkles"></i>Banquet up to 500 Guests</span>
+      <span><i data-lucide="sparkles"></i>Festival Hampers</span>
+      <span><i data-lucide="sparkles"></i>Family Restaurant</span>
+      <span><i data-lucide="sparkles"></i>Authentic Sweets Since 2002</span>
+      <!-- duplicate for seamless loop -->
+      <span><i data-lucide="sparkles"></i>Pure Desi Ghee Mithai</span>
+      <span><i data-lucide="sparkles"></i>Royal Thali Experience</span>
+      <span><i data-lucide="sparkles"></i>Custom Designer Cakes</span>
+      <span><i data-lucide="sparkles"></i>Banquet up to 500 Guests</span>
+      <span><i data-lucide="sparkles"></i>Festival Hampers</span>
+      <span><i data-lucide="sparkles"></i>Family Restaurant</span>
+      <span><i data-lucide="sparkles"></i>Authentic Sweets Since 2002</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" data-testid="about-section">
+    <div class="container-xl">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5 position-relative" data-aos="fade-right">
+          <div class="about-img-main">
+            <img src="https://images.pexels.com/photos/37219215/pexels-photo-37219215.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Indian sweet tradition" loading="lazy">
+          </div>
+          <div class="about-img-overlap" data-aos="zoom-in" data-aos-delay="200">
+            <img src="https://images.pexels.com/photos/8887052/pexels-photo-8887052.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sweets" loading="lazy">
+          </div>
+          <div class="corner-mark"></div>
+        </div>
+        <div class="col-lg-7">
+          <div class="overline text-gold mb-3" data-aos="fade-up">Our Story</div>
+          <h2 class="font-serif section-title" data-aos="fade-up">
+            A tradition of <span class="fst-italic text-maroon">taste</span>,<br>
+            served with <span class="fst-italic text-maroon">love</span>.
+          </h2>
+          <p class="section-lead mt-4" data-aos="fade-up">
+            Since 2002, Shree Shyam Dairy has been Noida&rsquo;s beloved address for authentic Indian mithai, royal cuisine and grand celebrations. From dawn-fresh ingredients to recipes whispered down generations — every bite carries our family&rsquo;s promise.
+          </p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-sm-6" data-aos="fade-up"><div class="pillar"><div class="pillar-icon"><i data-lucide="leaf"></i></div><div><div class="pillar-title font-serif">Fresh Daily</div><div class="pillar-text">Prepared in small batches each morning</div></div></div></div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="80"><div class="pillar"><div class="pillar-icon"><i data-lucide="shield-check"></i></div><div><div class="pillar-title font-serif">Hygienic</div><div class="pillar-text">FSSAI certified spotless kitchens</div></div></div></div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="160"><div class="pillar"><div class="pillar-icon"><i data-lucide="flame"></i></div><div><div class="pillar-title font-serif">Authentic Recipes</div><div class="pillar-text">Family heritage of three generations</div></div></div></div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="240"><div class="pillar"><div class="pillar-icon"><i data-lucide="heart-handshake"></i></div><div><div class="pillar-title font-serif">Family First</div><div class="pillar-text">Where every guest is welcomed home</div></div></div></div>
+          </div>
+
+          <div class="counters row g-3 mt-4 pt-4" data-testid="about-counters">
+            <div class="col-4"><div class="counter font-serif text-maroon" data-count="1000">0</div><div class="overline">Happy Customers</div></div>
+            <div class="col-4"><div class="counter font-serif text-maroon" data-count="200">0</div><div class="overline">Sweet Varieties</div></div>
+            <div class="col-4"><div class="counter font-serif text-maroon" data-count="500">0</div><div class="overline">Events Hosted</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNATURE SWEETS -->
+  <section id="sweets" class="section sweets" data-testid="sweets-section">
+    <span class="deco-ring r-tr"></span><span class="deco-ring r-bl"></span>
+    <div class="container-xl position-relative">
+      <div class="row align-items-end g-4 mb-5">
+        <div class="col-md-8">
+          <div class="overline text-gold mb-3" data-aos="fade-up">Signature Mithai</div>
+          <h2 class="font-serif section-title text-cream" data-aos="fade-up">
+            Sweet artistry,<br><span class="fst-italic text-gold">crafted by hand.</span>
+          </h2>
+        </div>
+        <div class="col-md-4 text-cream-70" data-aos="fade-up">
+          Each tray you see has travelled from heritage moulds, copper kadhais and generations of patience to your table.
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up"><article class="sweet-card" data-testid="sweet-card-0">
+          <div class="sweet-img"><img src="https://images.pexels.com/photos/8887052/pexels-photo-8887052.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Indian Sweets" loading="lazy"><span class="badge-gold">60+ Items</span><div class="sweet-caption"><span class="overline text-gold">Daily Classics</span><div class="font-serif sweet-title">Indian Sweets</div></div></div>
+          <div class="sweet-body"><p>Rasgulla, Gulab Jamun, Kaju Katli, Soan Papdi — handcrafted in pure desi ghee.</p><a href="#contact" class="round-arrow" data-testid="sweet-card-cta-0"><i data-lucide="arrow-up-right"></i></a></div>
+        </article></div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="120"><article class="sweet-card" data-testid="sweet-card-1">
+          <div class="sweet-img"><img src="https://images.pexels.com/photos/37219215/pexels-photo-37219215.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Mithai Collection" loading="lazy"><span class="badge-gold">Curated · Boxed</span><div class="sweet-caption"><span class="overline text-gold">Premium Selection</span><div class="font-serif sweet-title">Mithai Collection</div></div></div>
+          <div class="sweet-body"><p>Saffron-infused barfis, dry-fruit creations and royal kalakand from our master halwais.</p><a href="#contact" class="round-arrow" data-testid="sweet-card-cta-1"><i data-lucide="arrow-up-right"></i></a></div>
+        </article></div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="240"><article class="sweet-card" data-testid="sweet-card-2">
+          <div class="sweet-img"><img src="https://images.pexels.com/photos/27497012/pexels-photo-27497012.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Festival Specials" loading="lazy"><span class="badge-gold">Seasonal</span><div class="sweet-caption"><span class="overline text-gold">Diwali · Holi · Rakhi</span><div class="font-serif sweet-title">Festival Specials</div></div></div>
+          <div class="sweet-body"><p>Limited-edition gift hampers, customised silver boxes and corporate orders.</p><a href="#contact" class="round-arrow" data-testid="sweet-card-cta-2"><i data-lucide="arrow-up-right"></i></a></div>
+        </article></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESTAURANT -->
+  <section id="restaurant" class="section restaurant" data-testid="restaurant-section">
+    <div class="container-xl">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-7 order-2 order-lg-1" data-aos="fade-right">
+          <div class="rest-img-wrap">
+            <img src="https://images.pexels.com/photos/24433378/pexels-photo-24433378.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Restaurant ambience" loading="lazy">
+            <div class="rest-glass" data-aos="fade-up" data-aos-delay="300">
+              <div class="overline text-maroon">Today&rsquo;s Table</div>
+              <div class="font-serif h3 m-0 mt-1">Royal Rajasthani Thali</div>
+              <div class="small text-brown-70 mt-1">Served with 12 traditional accompaniments</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 order-1 order-lg-2">
+          <div class="overline text-gold mb-3" data-aos="fade-up">Restaurant Experience</div>
+          <h2 class="font-serif section-title" data-aos="fade-up">
+            Perfect place for <span class="fst-italic text-maroon">family,</span> friends &amp; <span class="fst-italic text-maroon">celebrations</span>.
+          </h2>
+          <p class="section-lead mt-4" data-aos="fade-up">Step into a warmly lit, family-friendly space where pure-veg royal thalis, Punjabi tandoor classics and chef&rsquo;s table specials meet attentive hospitality.</p>
+          <ul class="feature-list mt-4">
+            <li data-aos="fade-up"><span class="fl-icon"><i data-lucide="users"></i></span><div><div class="font-serif h5">Spacious Family Seating</div><div class="small text-brown-70">Cozy booths &amp; open dining for 120 guests</div></div></li>
+            <li data-aos="fade-up" data-aos-delay="80"><span class="fl-icon"><i data-lucide="utensils"></i></span><div><div class="font-serif h5">Pure Vegetarian Multi-cuisine</div><div class="small text-brown-70">North Indian · South Indian · Chinese · Continental</div></div></li>
+            <li data-aos="fade-up" data-aos-delay="160"><span class="fl-icon"><i data-lucide="clock"></i></span><div><div class="font-serif h5">Open All Day</div><div class="small text-brown-70">11:00 AM – 11:30 PM · Lunch &amp; Dinner Buffets</div></div></li>
+          </ul>
+          <a href="#contact" class="btn btn-maroon rounded-pill px-4 py-3 mt-4" data-testid="reserve-table-btn">Reserve a Table</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAKERY -->
+  <section id="bakery" class="section bakery" data-testid="bakery-section">
+    <div class="container-xl">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5">
+          <div class="overline text-gold mb-3" data-aos="fade-up">Premium Bakery</div>
+          <h2 class="font-serif section-title" data-aos="fade-up">
+            Where every <span class="fst-italic text-maroon">slice</span><br>tells a story.
+          </h2>
+          <p class="section-lead mt-4" data-aos="fade-up">From mirror-glazed celebration cakes to flaky breakfast croissants — our bakery counter brings together European technique and Indian warmth.</p>
+          <div class="row g-3 mt-4">
+            <div class="col-sm-6" data-aos="fade-up"><div class="pillar"><div class="pillar-icon"><i data-lucide="cake"></i></div><div><div class="font-serif">Designer Cakes</div><div class="pillar-text">Photo-print · Theme · Tier</div></div></div></div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="80"><div class="pillar"><div class="pillar-icon"><i data-lucide="cookie"></i></div><div><div class="font-serif">Pastries &amp; Cookies</div><div class="pillar-text">Daily fresh batches</div></div></div></div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="160"><div class="pillar"><div class="pillar-icon"><i data-lucide="croissant"></i></div><div><div class="font-serif">Artisan Breads</div><div class="pillar-text">Sourdough · Brioche · Bun</div></div></div></div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="240"><div class="pillar"><div class="pillar-icon"><i data-lucide="gift"></i></div><div><div class="font-serif">Custom Orders</div><div class="pillar-text">Corporate · Birthday · Wedding</div></div></div></div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="bakery-grid">
+            <div class="bg-1 reveal" data-aos="zoom-in"><img src="https://images.pexels.com/photos/27497012/pexels-photo-27497012.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Premium cake" loading="lazy"></div>
+            <div class="bg-2 reveal" data-aos="zoom-in" data-aos-delay="120"><img src="https://images.pexels.com/photos/5669399/pexels-photo-5669399.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cakes display" loading="lazy"></div>
+            <div class="bg-3" data-aos="zoom-in" data-aos-delay="240"><div class="text-center"><div class="font-serif text-gold h1 m-0">Fresh</div><div class="overline text-cream-80 mt-2">Baked Daily 6 AM</div></div></div>
+            <div class="bg-4 reveal" data-aos="zoom-in" data-aos-delay="360"><img src="https://images.pexels.com/photos/8887052/pexels-photo-8887052.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Assorted desserts" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTY HALL -->
+  <section id="party-hall" class="section party-hall" data-testid="party-hall-section">
+    <div class="party-bg"><img src="https://images.pexels.com/photos/12688995/pexels-photo-12688995.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" loading="lazy"></div>
+    <div class="container-xl position-relative">
+      <div class="text-center mx-auto" style="max-width:760px">
+        <div class="overline text-gold mb-3" data-aos="fade-up">Banquet &amp; Events</div>
+        <h2 class="font-serif section-title text-cream" data-aos="fade-up">Reserve your <span class="fst-italic text-gold">celebration</span> space.</h2>
+        <p class="text-cream-70 mt-3" data-aos="fade-up">A grand banquet hall with chandelier lighting, customised mandap stages and capacity up to 500 guests — your milestone, our craft.</p>
+      </div>
+
+      <div class="party-grid mt-5">
+        <div class="pg-1" data-aos="zoom-in"><img src="https://images.pexels.com/photos/16935999/pexels-photo-16935999.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Banquet hall" loading="lazy"></div>
+        <div class="pg-2" data-aos="zoom-in" data-aos-delay="120"><img src="https://images.pexels.com/photos/15621210/pexels-photo-15621210.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Event setup" loading="lazy"></div>
+        <div class="pg-3" data-aos="zoom-in" data-aos-delay="240">
+          <div class="overline text-gold">Capacity</div>
+          <div class="font-serif" style="font-size:3.5rem;line-height:1">500<span class="text-gold">+</span></div>
+          <div class="text-cream-70 small mt-2">guests · seated + buffet · valet parking</div>
+          <div class="overline text-cream-50 mt-3" style="font-size:.55rem">AC · Stage · Mandap · LED</div>
+        </div>
+      </div>
+
+      <div class="row g-3 mt-4">
+        <div class="col-sm-6 col-lg-3" data-aos="fade-up"><div class="event-card"><i data-lucide="cake" class="text-gold"></i><div class="font-serif h4 mt-3">Birthday Parties</div><div class="small text-cream-70">Theme decor · DJ · Custom cakes</div></div></div>
+        <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="80"><div class="event-card"><i data-lucide="users-2" class="text-gold"></i><div class="font-serif h4 mt-3">Family Functions</div><div class="small text-cream-70">Pre-wedding · Anniversary · Engagement</div></div></div>
+        <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="160"><div class="event-card"><i data-lucide="briefcase" class="text-gold"></i><div class="font-serif h4 mt-3">Corporate Events</div><div class="small text-cream-70">Conferences · Launches · Galas</div></div></div>
+        <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="240"><div class="event-card"><i data-lucide="sparkles" class="text-gold"></i><div class="font-serif h4 mt-3">Festivals &amp; Pujas</div><div class="small text-cream-70">Cultural · Sangeet · Mehndi</div></div></div>
+      </div>
+
+      <div class="text-center mt-5">
+        <a href="#contact" class="btn btn-gold rounded-pill px-4 py-3" data-testid="book-hall-cta">Reserve Your Celebration Space <i data-lucide="arrow-right" class="ms-2" style="width:16px;height:16px"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section reviews" data-testid="reviews-section">
+    <div class="container-xl">
+      <div class="row align-items-end mb-5 g-3">
+        <div class="col-md-8">
+          <div class="overline text-gold mb-3">Stories from Our Guests</div>
+          <h2 class="font-serif section-title">Sweet memories,<br><span class="fst-italic text-maroon">shared with us.</span></h2>
+        </div>
+        <div class="col-md-4 text-md-end d-flex gap-2 justify-content-md-end">
+          <button class="carousel-arrow" data-bs-target="#reviewCarousel" data-bs-slide="prev" data-testid="review-prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+          <button class="carousel-arrow" data-bs-target="#reviewCarousel" data-bs-slide="next" data-testid="review-next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
+
+      <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4500" data-testid="review-carousel">
+        <div class="carousel-inner"></div>
+        <div class="carousel-indicators luxe-indicators"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact" data-testid="contact-section">
+    <span class="deco-ring r-tl"></span><span class="deco-ring r-br"></span>
+    <div class="container-xl position-relative">
+      <div class="row g-5">
+        <div class="col-lg-5">
+          <div class="overline text-gold mb-3">Visit · Call · Order</div>
+          <h2 class="font-serif section-title text-cream" data-aos="fade-up">Come, be our <span class="fst-italic text-gold">guest.</span></h2>
+          <p class="text-cream-70 mt-3">We&rsquo;re open every day, ready to make your day a little sweeter.</p>
+
+          <ul class="contact-list mt-4">
+            <li><span class="cl-icon"><i data-lucide="map-pin"></i></span><div><div class="overline text-gold">Address</div><div class="font-serif h5 m-0 mt-1">SHREE SHYAM DAIRY</div><div class="small text-cream-70">Sector 57, Noida, Uttar Pradesh 201301</div></div></li>
+            <li><span class="cl-icon"><i data-lucide="phone"></i></span><div><div class="overline text-gold">Call</div><a href="tel:+919999999999" class="font-serif h5 m-0 mt-1 d-block text-cream">+91 99999 99999</a><div class="small text-cream-70">Reservations &amp; Bulk Orders</div></div></li>
+            <li><span class="cl-icon"><i data-lucide="clock"></i></span><div><div class="overline text-gold">Hours</div><div class="font-serif h5 m-0 mt-1">11:00 AM – 11:30 PM</div><div class="small text-cream-70">Open all 7 days</div></div></li>
+            <li><span class="cl-icon"><i data-lucide="mail"></i></span><div><div class="overline text-gold">Email</div><a href="mailto:hello@shreeshyamdairy.in" class="font-serif h5 m-0 mt-1 d-block text-cream">hello@shreeshyamdairy.in</a></div></li>
+          </ul>
+
+          <div class="d-flex flex-wrap gap-2 mt-4" id="order">
+            <a href="tel:+919999999999" class="btn btn-cream rounded-pill" data-testid="call-cta"><i data-lucide="phone" style="width:15px;height:15px"></i><span class="ms-2">Call Now</span></a>
+            <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer" class="btn btn-whatsapp rounded-pill" data-testid="whatsapp-cta"><i data-lucide="message-circle" style="width:15px;height:15px"></i><span class="ms-2">WhatsApp Enquiry</span></a>
+            <a href="#order" class="btn btn-gold rounded-pill" data-testid="order-online-cta"><i data-lucide="shopping-bag" style="width:15px;height:15px"></i><span class="ms-2">Order Online</span></a>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="map-wrap" data-aos="zoom-in">
+            <iframe title="Shree Shyam Dairy Location" src="https://www.google.com/maps?q=Sector+57+Noida&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map-badge"><i data-lucide="map-pin" class="text-gold"></i><span class="ms-2 small">Sector 57, Noida</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" data-testid="site-footer">
+    <div class="container-xl">
+      <div class="row g-5">
+        <div class="col-md-6">
+          <div class="font-serif h2 m-0 text-cream">Shree Shyam <i class="text-gold">Dairy</i></div>
+          <p class="text-cream-60 mt-3" style="max-width:480px">A Noida legacy of sweets, restaurant dining, premium bakery and grand celebrations — under one royal roof since 2002.</p>
+          <div class="d-flex gap-2 mt-4">
+            <a href="#" class="social" aria-label="Instagram" data-testid="social-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social" aria-label="Facebook" data-testid="social-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social" aria-label="YouTube" data-testid="social-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="overline text-gold mb-3">Explore</div>
+          <ul class="footer-links">
+            <li><a href="#sweets">Sweets</a></li>
+            <li><a href="#restaurant">Restaurant</a></li>
+            <li><a href="#bakery">Bakery</a></li>
+            <li><a href="#party-hall">Party Hall</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="overline text-gold mb-3">Visit</div>
+          <ul class="footer-links">
+            <li>Sector 57, Noida</li>
+            <li>Uttar Pradesh 201301</li>
+            <li>11:00 AM – 11:30 PM</li>
+            <li>+91 99999 99999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2 mt-5 pt-4">
+        <div>&copy; <span id="year"></span> Shree Shyam Dairy. All rights reserved.</div>
+        <div>Crafted with tradition, served with love.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING ACTIONS -->
+  <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer" class="float-btn float-wa" data-testid="float-whatsapp" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+  <a href="tel:+919999999999" class="float-btn float-call" data-testid="float-call" aria-label="Call"><i data-lucide="phone"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="assests/main.js"></script>
+</body>
+</html>
